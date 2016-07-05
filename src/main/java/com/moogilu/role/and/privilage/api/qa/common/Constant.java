@@ -5,7 +5,9 @@ package com.moogilu.role.and.privilage.api.qa.common;
  */
 public class Constant {
 
-    public static final String USER_NAME = "test";
-    public static final String PASSWORD = "pass";
-    public static final String URL = "http://localhost:8080";
+    public static final String USER_NAME = "reguser2016@gmail.com";
+    public static final String PASSWORD = "password";
+    public static final String URL = "https://qa-payments.leapset.com/";
+    public static final String BASE_PATH = "api";
+    public static final int PORT = 443;
 }

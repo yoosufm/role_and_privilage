@@ -13,6 +13,7 @@ public class TestLogin extends TestBase {
     @BeforeClass
     public void init(){
         url = "login";
+        requestMethod = "POST";
     }
 
     @Test
@@ -21,7 +22,7 @@ public class TestLogin extends TestBase {
         loginRequest.username = Constant.USER_NAME;
         loginRequest.password = Constant.PASSWORD;
 
-        Send.send(getAsString(loginRequest), url);
+        Send.send(headers, getAsString(loginRequest),url,requestMethod);
     }
 
 }
