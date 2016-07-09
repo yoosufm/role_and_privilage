@@ -17,11 +17,12 @@ public class Send {
     public static String send(Map<String, String> headers, String body, String uri, String requestMethod){
         RestAssured.baseURI = Constant.URL;
         RestAssured.basePath = Constant.BASE_PATH;
-        RestAssured.port = Constant.PORT;
+//        RestAssured.port = Constant.PORT;
+        System.out.println(body);
 
         RequestSpecification requestSpecification = RequestUtil.getRequestSpec(headers, body);
         requestSpecification = given().spec(requestSpecification);
-         return execute(requestMethod, requestSpecification, "login");
+         return execute(requestMethod, requestSpecification, uri);
     }
 
     public static String execute(String reqMethod,  RequestSpecification requestSpecification, String uri ){
