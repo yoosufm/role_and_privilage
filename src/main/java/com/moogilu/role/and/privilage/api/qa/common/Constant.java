@@ -18,4 +18,10 @@ public class Constant {
     public static final String FEATURE_NAME = "";
     public static final boolean READ = false;
     public static final boolean WRITE = false;
+
+    public static final String REQ_METHOD_GET = "GET";
+    public static final String REQ_METHOD_POST = "POST";
+    public static final String REQ_METHOD_DELETE = "DELETE";
+
+
 }

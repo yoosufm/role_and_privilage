@@ -5,7 +5,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.moogilu.role.and.privilage.api.qa.common.Constant;
 import com.moogilu.role.and.privilage.api.qa.requests.*;
-import com.moogilu.role.and.privilage.api.qa.responses.LoginResponseModel;
 import com.moogilu.role.and.privilage.api.qa.util.Send;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
