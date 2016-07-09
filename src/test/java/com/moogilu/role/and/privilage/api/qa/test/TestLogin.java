@@ -86,7 +86,7 @@ public class TestLogin extends TestBase {
     public void testViewUsers(){
         url = "users";
 
-        response =  Send.send(headers, "",url,"GET");
+        response =  Send.send(headers, "",url, Constant.REQ_METHOD_GET);
         System.out.println(response);
     }
 
