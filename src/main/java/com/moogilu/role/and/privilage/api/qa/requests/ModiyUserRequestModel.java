@@ -1,6 +1,6 @@
 package com.moogilu.role.and.privilage.api.qa.requests;
 
-public class ModiyUserRequestModel {
+public class ModiyUserRequestModel extends RequestBase {
 
     public String requestBody = "";
     public String name = "";

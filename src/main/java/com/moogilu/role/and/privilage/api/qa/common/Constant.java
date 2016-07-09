@@ -10,4 +10,12 @@ public class Constant {
     public static final String URL = "https://qa-payments.leapset.com/";
     public static final String BASE_PATH = "api";
     public static final int PORT = 443;
+
+    public static final String NAME = "";
+    public static final String EMAIL = "";
+    public static final int USER_ID = 0;
+    public static final int FEATURE_ID = 0;
+    public static final String FEATURE_NAME = "";
+    public static final boolean READ = false;
+    public static final boolean WRITE = false;
 }

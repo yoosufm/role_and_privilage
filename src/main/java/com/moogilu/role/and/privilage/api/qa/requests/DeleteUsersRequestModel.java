@@ -6,5 +6,5 @@ package com.moogilu.role.and.privilage.api.qa.requests;
  */
 public class DeleteUsersRequestModel extends RequestBase{
 
-
+    public int user_id = 0;
 }
