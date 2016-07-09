@@ -68,7 +68,7 @@ public class TestLogin extends TestBase {
     public void testViewUser(){
         url = "user/" + userId;
 
-        response =  Send.send(headers, "",url,"GET");
+        response =  Send.send(headers, "",url, Constant.REQ_METHOD_GET);
         System.out.println(response);
     }
 
@@ -78,7 +78,7 @@ public class TestLogin extends TestBase {
         DeleteUsersRequestModel deleteUsersRequestModel = new DeleteUsersRequestModel();
         deleteUsersRequestModel.user_id = userId;
 
-        response =  Send.send(headers, getAsString(deleteUsersRequestModel),url,"DELETE");
+        response =  Send.send(headers, getAsString(deleteUsersRequestModel),url, Constant.REQ_METHOD_DELETE);
         System.out.println(response);
     }
 
