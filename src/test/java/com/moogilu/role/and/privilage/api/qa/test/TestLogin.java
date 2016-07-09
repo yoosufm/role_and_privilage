@@ -68,9 +68,8 @@ public class TestLogin extends TestBase {
     @Test(dependsOnMethods = "testEditUser")
     public void testViewUser(){
         url = "user/" + userId;
-        ViewUsersRequestModel viewUsersRequestModel = new ViewUsersRequestModel();
 
-        response =  Send.send(headers, getAsString(viewUsersRequestModel),url,requestMethod);
+        response =  Send.send(headers, "",url,"GET");
         System.out.println(response);
     }
 
@@ -80,12 +79,35 @@ public class TestLogin extends TestBase {
         DeleteUsersRequestModel deleteUsersRequestModel = new DeleteUsersRequestModel();
         deleteUsersRequestModel.user_id = userId;
 
-        response =  Send.send(headers, getAsString(deleteUsersRequestModel),url,requestMethod);
+        response =  Send.send(headers, getAsString(deleteUsersRequestModel),url,"DELETE");
+        System.out.println(response);
+    }
+
+    @Test(dependsOnMethods = "testDeleteUser")
+    public void testViewUsers(){
+        url = "users";
+
+        response =  Send.send(headers, "",url,"GET");
+        System.out.println(response);
+    }
+
+    @Test(dependsOnMethods = "testViewUsers")
+    public void testAddFeature(){
+        url = "feature";
+        AddFeatureRequestModel addFeatureRequestModel = new AddFeatureRequestModel();
+        addFeatureRequestModel.name = getFeatureName();
+        headers.put("x-app-id","1");
+
+        response =  Send.send(headers, getAsString(addFeatureRequestModel),url,"POST");
         System.out.println(response);
     }
 
     private String getUserName(){
         return UUID.randomUUID().toString().split("-")[0];
+    }
+
+    private String getFeatureName(){
+        return "F-" + UUID.randomUUID().toString().split("-")[0];
     }
 
     private String getToken(){
