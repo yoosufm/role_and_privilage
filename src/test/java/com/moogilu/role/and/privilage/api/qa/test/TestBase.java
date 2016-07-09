@@ -35,7 +35,6 @@ public class TestBase {
         if(!url.equalsIgnoreCase("login")){
             headers.put("x-access-token", token);
             headers.put("x-user-id", user_id);
-
         }
     }
 
