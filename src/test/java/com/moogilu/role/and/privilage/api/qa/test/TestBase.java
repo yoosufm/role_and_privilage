@@ -23,6 +23,7 @@ public class TestBase {
     protected String token = "";
     protected String user_id = "";
     protected int userId = 0;
+    protected int featureId = 0;
 
     @BeforeClass
     public void initBaseClass(){
@@ -64,6 +65,17 @@ public class TestBase {
         try {
             JSONObject responseBody = new JSONObject(response);
             user_id = responseBody.getJSONObject("data").getString("user_id");
+        }catch (JSONException e){
+//            e.printStackTrace();
+        }finally {
+            return user_id;
+        }
+    }
+
+    public  String getFeatureId(String response) {
+        try {
+            JSONObject responseBody = new JSONObject(response);
+            user_id = responseBody.getJSONObject("data").getString("feature_id");
         }catch (JSONException e){
 //            e.printStackTrace();
         }finally {

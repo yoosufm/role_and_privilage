@@ -101,6 +101,59 @@ public class TestLogin extends TestBase {
         System.out.println(response);
     }
 
+    @Test(dependsOnMethods = "testAddFeature")
+    public void testViewFeatures(){
+        featureId = Integer.parseInt(getFeatureId(response));
+        url = "features";
+
+        response =  Send.send(headers, "",url, Constant.REQ_METHOD_GET);
+        System.out.println(response);
+    }
+
+    @Test(dependsOnMethods = "testViewFeatures")
+    public void testViewPermission(){
+        url = "permission/" + featureId;
+
+        response =  Send.send(headers, "",url, Constant.REQ_METHOD_GET);
+        System.out.println(response);
+    }
+
+    @Test(dependsOnMethods = "testViewPermission")
+    public void testViewPermissions(){
+        url = "permissions";
+
+        response =  Send.send(headers, "",url, Constant.REQ_METHOD_GET);
+        System.out.println(response);
+    }
+
+    @Test(dependsOnMethods = "testViewPermissions")
+    public void testGrantPermission(){
+        url = "permission";
+
+        GrantPermissionRequestModel grantPermissionRequestModel = new GrantPermissionRequestModel();
+        grantPermissionRequestModel.read = true;
+        grantPermissionRequestModel.write = true;
+
+        response =  Send.send(headers, getAsString(grantPermissionRequestModel),url, Constant.REQ_METHOD_POST);
+        System.out.println(response);
+    }
+
+    @Test(dependsOnMethods = "testGrantPermission")
+    public void testViewUserPermissions(){
+        url = "user/" + userId + "/permissions";
+
+        response =  Send.send(headers, "",url, Constant.REQ_METHOD_GET);
+        System.out.println(response);
+    }
+
+    @Test(dependsOnMethods = "testViewUserPermissions")
+    public void testViewUserPermission(){
+        url = "user/" + userId + "/permission/" + featureId;
+
+        response =  Send.send(headers, "",url, Constant.REQ_METHOD_GET);
+        System.out.println(response);
+    }
+
     private String getUserName(){
         return UUID.randomUUID().toString().split("-")[0];
     }
