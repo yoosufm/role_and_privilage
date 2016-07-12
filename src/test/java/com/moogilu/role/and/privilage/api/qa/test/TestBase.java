@@ -1,6 +1,7 @@
 package com.moogilu.role.and.privilage.api.qa.test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.moogilu.role.and.privilage.api.qa.requests.RequestBase;
 import org.apache.http.entity.StringEntity;
@@ -24,10 +25,13 @@ public class TestBase {
     protected String user_id = "";
     protected int userId = 0;
     protected int featureId = 0;
+    protected ObjectMapper mapper = new ObjectMapper();
+
 
     @BeforeClass
     public void initBaseClass(){
         setHeaders();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
     public void  setHeaders(){
@@ -82,4 +86,7 @@ public class TestBase {
             return user_id;
         }
     }
+
+
+
 }

@@ -5,7 +5,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.moogilu.role.and.privilage.api.qa.common.Constant;
 import com.moogilu.role.and.privilage.api.qa.requests.*;
+import com.moogilu.role.and.privilage.api.qa.responses.LoginResponseModel;
 import com.moogilu.role.and.privilage.api.qa.util.Send;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -25,13 +27,15 @@ public class TestLogin extends TestBase {
     }
 
     @Test
-    public void testLogin(){
+    public void testLogin()  throws Exception{
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.username = Constant.USER_NAME;
         loginRequest.password = Constant.PASSWORD;
 
         response = Send.send(headers, getAsString(loginRequest),url,requestMethod);
         System.out.println(response);
+        LoginResponseModel loginResponseModel = mapper.readValue(response, LoginResponseModel.class);
+        Assert.assertEquals(loginResponseModel.code, "");
     }
 
     @Test(dependsOnMethods = "testLogin")
